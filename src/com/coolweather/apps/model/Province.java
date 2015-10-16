@@ -3,26 +3,28 @@ package com.coolweather.apps.model;
 public class Province {
 	
 	private int id;
-	private String proviceName;
-	private String proviceCode;
+	private String provinceName;
+	private String provinceCode;
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getProviceName() {
-		return proviceName;
+	public String getProvinceName() {
+		return provinceName;
 	}
-	public void setProviceName(String proviceName) {
-		this.proviceName = proviceName;
+	public void setProvinceName(String provinceName) {
+		this.provinceName = provinceName;
 	}
-	public String getProviceCode() {
-		return proviceCode;
+	public String getProvinceCode() {
+		return provinceCode;
 	}
-	public void setProviceCode(String proviceCode) {
-		this.proviceCode = proviceCode;
+	public void setProvinceCode(String provinceCode) {
+		this.provinceCode = provinceCode;
 	}
+	
+	
 	
 	
 	
