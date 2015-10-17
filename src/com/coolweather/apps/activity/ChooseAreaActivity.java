@@ -3,6 +3,8 @@ package com.coolweather.apps.activity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.security.auth.PrivateCredentialPermission;
+
 import com.coolweather.apps.R;
 import com.coolweather.apps.db.CoolWeatherDB;
 import com.coolweather.apps.model.City;
@@ -72,15 +74,24 @@ public class ChooseAreaActivity extends Activity {
 	 * 当前选中的级别
 	 */
 	private int currentLevel;
+	
+	
+	/**
+	 * 是否从WeatherAcitivy中跳转过来
+	 */
+	
+	private boolean isFromWeatherAcitivty;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
+
+		isFromWeatherAcitivty = getIntent().getBooleanExtra("from_weather_activity", false);
 		
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-		if (prefs.getBoolean("city_selected", false)) {
+		if (prefs.getBoolean("city_selected", false) && !isFromWeatherAcitivty) {
 			Intent intent = new Intent(this,WeatherActivity.class);
 			startActivity(intent);
 			finish();
@@ -283,6 +294,10 @@ public class ChooseAreaActivity extends Activity {
 		}else if (currentLevel == LEVEL_CITY) {
 			queryProvinces();
 		}else {
+			if (isFromWeatherAcitivty) {
+				Intent intent = new Intent(this,WeatherActivity.class);
+				startActivity(intent);
+			}
 			finish();
 		}
 	}

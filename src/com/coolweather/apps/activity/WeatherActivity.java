@@ -168,7 +168,11 @@ public class WeatherActivity extends Activity implements android.view.View.OnCli
 			@Override
 			public void onError(Exception e) {
 				// TODO Auto-generated method stub
-				publishText.setText("同步失败");
+			runOnUiThread(new Runnable() {
+				public void run() {
+					publishText.setText("同步失败");
+				}
+			});
 			}
 		});
 		
