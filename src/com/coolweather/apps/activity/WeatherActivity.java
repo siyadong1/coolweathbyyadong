@@ -1,6 +1,8 @@
 package com.coolweather.apps.activity;
 
 import com.coolweather.apps.R;
+import com.coolweather.apps.receive.AutoUpdateReceive;
+import com.coolweather.apps.service.AutoUpdateService;
 import com.coolweather.apps.util.HttpCallbackListener;
 import com.coolweather.apps.util.HttpUtil;
 import com.coolweather.apps.util.Utility;
@@ -194,6 +196,11 @@ public class WeatherActivity extends Activity implements android.view.View.OnCli
 		currentDateText.setText(prefs.getString("current_data", ""));
 		weatherInfoLayout.setVisibility(View.VISIBLE);
 		cityNameText.setVisibility(View.VISIBLE);
+		/**
+		 * 启动后台自动更新天气
+		 */
+		Intent intent = new Intent(this,AutoUpdateService.class);
+		startService(intent);
 		
 		
 		
